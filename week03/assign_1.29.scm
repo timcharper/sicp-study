@@ -1,4 +1,13 @@
 #lang scheme/base
+; Implement a procedure that takes f, a, b, and n, and returns the value of the integral.  Simpson's rule
+; http://en.wikipedia.org/wiki/Simpson%27s_rule#Composite_Simpson.27s_rule
+
+; Simpsons rule:
+; a, b = range
+; n = fidelity operator - more intense computation, more accurate
+; h = (b - a) / n   <- in other words, the incrementer
+; k = 0..(b-a)
+; y(k) = f(a + kh)
 
 (define (cube x) (* x x x))
 (define (sum term a next b) 
@@ -12,33 +21,6 @@
   (* (sum f (+ a (/ dx 2.0)) add-dx b) 
      dx))
 
-; Implement a procedure that takes f, a, b, and n, and returns the value of the integral.  Simpson's rule
-; http://en.wikipedia.org/wiki/Simpson%27s_rule#Composite_Simpson.27s_rule
-
-
-                                        ; integrand: function used to calculate an integral
-; quadratic equation:
-;   Why is it called quadratic? Quadratic comes from quadratus, which is the Latin word for "square."
-;
-;   Why is it called a polynomial? Nomial = name of a term. Poly = many. (3x^2 + 3x + 5) is a polynomial.  (3x^2 + 3/x + 5) is not, because one of the division. (I think the coefficients need to be whole numbers).
-;   What is a coefficient? It's a constant multiplicative factor of a specific object. In 3x^2, 3 is the coefficient.
-
-
-; Simpsons rule:
-; a, b = range
-; n = fidelity operator - more intense computation, more accurate
-; h = (b - a) / n   <- in other words, the incrementer
-; k = 0..(b-a)
-; y(k) = f(a + kh)
-
-; algorithm:
-; * compute k
-; * sum of:
-; ** compute y(a + kh) when k is 0
-; ** compute y(a + kh) when k is b - a
-; ** computer y(a + kh) when k is 1 .. (b - a - 1)
-
-; if dx were 4, 0 (1 2 3) 4 <- 3 inner elements
 
 (define (simpsons-integral-coefficient k)
   (if (even? k) 2 4)
