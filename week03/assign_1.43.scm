@@ -1,5 +1,5 @@
 #lang scheme/base
-; create repeated
+;; create repeated
 
 (require (planet schematics/schemeunit:3))
 

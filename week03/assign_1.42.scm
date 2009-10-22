@@ -1,6 +1,5 @@
 #lang scheme/base
-
-                                        ; differential of a function - the slope of the curve at a given point
+;; differential of a function - the slope of the curve at a given point
 
 (define tolerance 0.0000001)
 (define (fixed-point f first-guess)
@@ -8,8 +7,6 @@
     (< (abs (- v1 v2)) tolerance))
   (define (try guess)
     (let ((next (f guess)))
-      (display guess)
-      (newline)
       (if (close-enough? guess next)
           next
           (try next))))
@@ -35,5 +32,8 @@
   (newtons-method (lambda (y) (- (square y) x))
                   1.0))
 
-((deriv cube) 5) ; 75.00001501625775
+;; ((deriv cube) 5)
+;; 75.00001501625775
+
 (sqrt 10)
+(square (sqrt 10))

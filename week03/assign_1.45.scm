@@ -57,6 +57,7 @@
 
 (define (retry-and-increment-until test x incrementor body)
   (let ((result (body x)))
+    (display ". ")
     (if (test result x)
         result
         (retry-and-increment-until test (incrementor x) incrementor body)
