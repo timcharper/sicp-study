@@ -23,7 +23,7 @@
 (define (map p sequence)
   (accumulate (lambda (x y) (cons (p x) y)) nil sequence))
 
-(check-equal? 
+(check-equal?
  (map square '(1 2 3))
  '(1 4 9)
  )
@@ -48,4 +48,3 @@
  (length '(1 2 3 4 5 6))
  6
  )
-
